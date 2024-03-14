@@ -3,7 +3,7 @@ import "./ScorePage.scss";
 
 const ScorePage = () => {
     return (
-        <div className="scorePage">
+        <div className="scorePage page">
             <h1>ScorePage</h1>
         </div>
     );

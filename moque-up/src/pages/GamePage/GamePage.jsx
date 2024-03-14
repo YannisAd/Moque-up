@@ -3,7 +3,7 @@ import "./GamePage.scss";
 
 const GamePage = () => {
     return (
-        <div className="gamePage">
+        <div className="gamePage page">
             <h1>GamePage</h1>
         </div>
     );

@@ -1,0 +1,26 @@
+html,
+body {
+    font-family: "RobotoMedium";
+    font-size: 16px;
+    > * {
+        * {
+            font-family: inherit;
+        }
+    }
+}
+
+@font-face {
+    font-family: "RobotoRegular";
+    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "RobotoMedium";
+    src: url("../fonts/Roboto-Medium.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
