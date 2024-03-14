@@ -7,6 +7,7 @@
     "@dnd-kit/core": "^6.1.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.13",
     "@mui/material": "^5.15.13",
     "@vitejs/plugin-react": "^4.2.1",
     "react": "^18.2.0",

@@ -13,10 +13,30 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        gap: 16px;
+
+        background-color: #ececec;
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        // overflow-y: scroll;
     }
 
     .board-droppable {
         flex: 4;
-        background-color: white;
+        background-size: 40px 40px;
+        background-image: linear-gradient(
+                to right,
+                #ececec 1px,
+                transparent 1px
+            ),
+            linear-gradient(to bottom, #ececec 1px, transparent 1px);
+    }
+
+    .draggable-item {
+        display: flex;
+        align-items: center;
     }
 }

@@ -6,7 +6,8 @@ export function Droppable(props) {
         id: props.id,
     });
     const style = {
-        color: isOver ? "green" : undefined,
+        backgroundColor:
+            isOver && props.id == "comp-list" ? "#dcdcdc" : undefined,
     };
 
     return (

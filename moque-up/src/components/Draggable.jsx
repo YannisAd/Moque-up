@@ -1,5 +1,6 @@
 import React from "react";
 import { useDraggable } from "@dnd-kit/core";
+import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 
 export function Draggable(props) {
     const { attributes, listeners, setNodeRef, transform } = useDraggable({
@@ -12,13 +13,16 @@ export function Draggable(props) {
         : undefined;
 
     return (
-        <button
+        <div
+            className="draggable-item"
             ref={setNodeRef}
+            id={props.id}
             style={{ ...style, ...props.customStyle }}
-            {...listeners}
-            {...attributes}
         >
             {props.children}
-        </button>
+            <button {...listeners} {...attributes} className="handle">
+                <MoreVertOutlinedIcon style={{ fill: "#afafaf" }} />
+            </button>
+        </div>
     );
 }
