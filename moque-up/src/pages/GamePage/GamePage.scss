@@ -1,5 +1,22 @@
 .gamePage {
-    h1 {
-        font-size: 3rem;
-    } 
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+
+    .list-droppable {
+        flex: 1;
+        background-color: #ececec;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .board-droppable {
+        flex: 4;
+        background-color: white;
+    }
 }

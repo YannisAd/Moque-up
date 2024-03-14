@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import GamePage from "./pages/GamePage/GamePage.jsx";
+import GamePage from "./pages/GamePage/GamePage";
 import HomePage from "./pages/HomePage/HomePage";
 import ScorePage from "./pages/ScorePage/ScorePage";
 import { AppContextProvider, useAppContext } from "./contexts/AppContext.jsx";
