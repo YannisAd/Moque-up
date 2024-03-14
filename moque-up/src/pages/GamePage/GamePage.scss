@@ -21,7 +21,8 @@
         }
 
         overflow-y: scroll;
-        overflow-x: unset;
+        overflow-x: visible;
+        height: calc(100% - 120px);
     }
 
     .board-container {
@@ -44,6 +45,20 @@
     .draggable-item {
         display: flex;
         flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    .playerZone {
+        position: absolute;
+        bottom: 0;
+        height: 120px;
+        width: 21.35%;
+        background-color: #1976d2;
+        padding: 12px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
         align-items: center;
     }
 }

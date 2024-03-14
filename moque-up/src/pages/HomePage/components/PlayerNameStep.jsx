@@ -1,20 +1,21 @@
 import React, { useState, useRef, useMemo, useCallback } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { useAppContext } from "../../../contexts/AppContext";
 
-const PlayerNameStep = ({ setPlayers, goToNextStep, saboteur }) => {
+const PlayerNameStep = ({ goToNextStep }) => {
     const [step, setStep] = useState(1);
     const [showRole, setShowRole] = useState(false);
     const [inputName, setInputName] = useState("");
     const playersList = useRef({});
-
-    let playerNumber = parseInt(localStorage.getItem("playerNumber"));
+    const { setPlayers, setSaboteur, saboteur, playerNumber, setPlayerNumber } =
+        useAppContext();
 
     if (!playerNumber) {
-        playerNumber = 4;
+        setPlayerNumber(4);
     }
     if (!saboteur) {
-        saboteur = Math.floor(Math.random() * playerNumber) + 1;
+        setSaboteur(Math.floor(Math.random() * playerNumber) + 1);
     }
 
     const currentName = useMemo(() => inputName, [inputName]);
@@ -30,7 +31,6 @@ const PlayerNameStep = ({ setPlayers, goToNextStep, saboteur }) => {
     const goToNextPlayer = () => {
         if (step === playerNumber) {
             localStorage.setItem("startingGameStep", 3);
-            localStorage.setItem("player", playersList.current);
             setPlayers(playersList.current);
             goToNextStep();
         }
@@ -55,9 +55,10 @@ const PlayerNameStep = ({ setPlayers, goToNextStep, saboteur }) => {
     return (
         <div className="playerName">
             <span className="description">
-                <h2>Il est maintenant temps de choisir un pseudo pour cette partie.
-                Votre rôle vous sera ensuite révélé.</h2>
-             
+                <h2>
+                    Il est maintenant temps de choisir un pseudo pour cette
+                    partie. Votre rôle vous sera ensuite révélé.
+                </h2>
                 <br />
                 ⚠️ Attention : Faites en sorte de conserver votre rôle secret !{" "}
                 <br />
@@ -135,7 +136,8 @@ const PlayerNameStep = ({ setPlayers, goToNextStep, saboteur }) => {
                 <Button
                     variant="contained"
                     onClick={goToNextPlayer}
-                    disabled={inputName === "" || !showRole}
+                    // disabled={inputName === "" || !showRole}
+                    disabled={inputName === ""}
                 >
                     Suivant
                 </Button>

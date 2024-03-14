@@ -1,5 +1,31 @@
 .scorePage {
-    h1 {
-        font-size: 3rem;
-    } 
+    .endScreen {
+        width: fit-content;
+        margin: auto;
+        background: linear-gradient(
+            to bottom,
+            rgba(100, 167, 234, 1),
+            rgba(100, 167, 234, 0.9)
+        );
+        padding: 80px;
+        color: white;
+        font-family: "RobotoMedium";
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .saboteurSelectors {
+            > div {
+                margin-top: 8px;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 8px;
+            }
+        }
+
+        .result {
+            margin-top: 16px;
+        }
+    }
 }

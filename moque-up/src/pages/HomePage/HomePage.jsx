@@ -7,10 +7,8 @@ import PlayerNameStep from "./components/PlayerNameStep";
 import PlayerNumberStep from "./components/PlayerNumberStep";
 
 const HomePage = () => {
-    const { setPlayers } = useAppContext();
-    const [saboteur, setSaboteur] = useState(null)
+    const { setSaboteur, setPlayerNumber } = useAppContext();
     const [step, setStep] = useState(1);
-    const [playerNumber, setPlayerNumber] = useState(null);
 
     useEffect(() => {
         const startingGameStep = localStorage.getItem('startingGameStep');
@@ -45,16 +43,13 @@ const HomePage = () => {
             <div className="steps">
                 {step === 1 && (
                     <PlayerNumberStep
-                        playerNumber={playerNumber}
                         handlePlayerNumber={handlePlayerNumber}
                         goToNextStep={goToNextStep}
                     />
                 )}
                 {step === 2 && (
                     <PlayerNameStep
-                        setPlayers={setPlayers}
                         goToNextStep={goToNextStep}
-                        saboteur={saboteur}
                     />
                 )}
                 {step === 3 && <StartGameStep/>}

@@ -2,34 +2,31 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
-import { useEffect } from "react";
+import { useAppContext } from "../../../contexts/AppContext";
 
-const PlayerNumberStep = ({
-    playerNumber,
-    handlePlayerNumber,
-    goToNextStep,
-}) => {
+const PlayerNumberStep = ({ handlePlayerNumber, goToNextStep }) => {
+    const { playerNumber } = useAppContext();
 
     const handleSelectNumber = (number) => {
         localStorage.setItem("playerNumber", number);
-        handlePlayerNumber(number)
-    }
-
+        handlePlayerNumber(number);
+    };
 
     const handleGoToNextStep = () => {
         localStorage.setItem("startingGameStep", 2);
         goToNextStep();
-    }
-    
+    };
+
     return (
         <div className="playerNumber">
             <span className="description">
-                <h2>Salut les apprentis designers !</h2> <br />Bienvenue dans Moque-up, le jeu
-                où vos amis peuvent devenir vos pires cauchemars.
+                <h2>Salut les apprentis designers !</h2> <br />
+                Bienvenue dans Moque-up, le jeu où vos amis peuvent devenir vos
+                pires cauchemars.
                 <br />
-                Avez-vous vraiment une âme d’artiste ? C’est ce que vous allez devoir
-                prouver à tous ! A vous de prouver que vous avez l’âme d’un
-                designer.
+                Avez-vous vraiment une âme d’artiste ? C’est ce que vous allez
+                devoir prouver à tous ! A vous de prouver que vous avez l’âme
+                d’un designer.
             </span>
             <span>Quel est le nombre de joueurs ?</span>
 

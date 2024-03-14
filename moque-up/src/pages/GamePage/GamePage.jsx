@@ -1,10 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef, useCallback, useState } from "react";
 import { useState, useEffect } from "react";
 import { DndContext, DragOverlay } from "@dnd-kit/core";
 import cloneDeep from "lodash.clonedeep";
 import { Droppable } from "../../components/Droppable";
 import { Draggable } from "../../components/Draggable";
 import InitialElems from "./ElementList";
+import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../../contexts/AppContext";
+import Button from "@mui/material/Button";
 
 import "./GamePage.scss";
 
@@ -12,6 +15,11 @@ const GamePage = () => {
     const [zIndex, setZIndex] = useState(101);
     const [activeId, setActiveId] = useState(null);
     const [drags, setDrags] = useState(InitialElems);
+    const { setPlayers, players, theme } = useAppContext();
+    const [currentPlayer, setCurrentPlayer] = useState(1);
+    const [currentTurn, setCurrentTurn] = useState(1);
+    const navigate = useNavigate();
+    const playerNumber = parseInt(localStorage.getItem("playerNumber"));
     const boardRef = useRef();
 
     useEffect(() => {
@@ -26,6 +34,31 @@ const GamePage = () => {
             }).observe(elem);
         }
     }, [drags]);
+
+    useEffect(() => {
+        if (players.length === 0) {
+            const storedPlayers = localStorage.getItem("players");
+            if (storedPlayers) {
+                setPlayers(JSON.parse(storedPlayers));
+            } else {
+                localStorage.removeItem("playerNumber");
+                localStorage.removeItem("startingGameStep");
+                localStorage.removeItem("theme");
+                navigate("/");
+            }
+        }
+    }, []);
+
+    const handleNextPlayer = useCallback(() => {
+        if (currentTurn === playerNumber * 3) {
+            navigate("/score");
+            return;
+        }
+
+        setCurrentPlayer((prev) => (prev === playerNumber ? 1 : prev + 1));
+
+        setCurrentTurn((prev) => prev + 1);
+    }, [currentTurn, playerNumber]);
 
     return (
         <div className="gamePage">
@@ -84,6 +117,28 @@ const GamePage = () => {
                     <></>
                 )}
             </DndContext>
+            <div className="playerZone">
+                <span>
+                    Tour du joueur : {players[currentPlayer].playerName}
+                </span>
+                <Button
+                    variant="outlined"
+                    onClick={handleNextPlayer}
+                    style={{
+                        color: "white", // Couleur du texte en rose pâle
+                        borderColor: "white", // Couleur de la bordure en rose pâle
+                        "&:hover": {
+                            backgroundColor: "white", // Changement de couleur de fond au survol
+                            color: "white", // Changement de la couleur du texte pour le contraste
+                        },
+                        width: "200px",
+                    }}
+                >
+                    {currentTurn === playerNumber * 3
+                        ? "Terminer la partie"
+                        : "Joueur suivant"}
+                </Button>
+            </div>
         </div>
     );
 
