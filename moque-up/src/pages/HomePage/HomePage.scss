@@ -8,6 +8,8 @@
     }
 
     .steps {
+        width: fit-content;
+        margin: auto;
         background: linear-gradient(
             to bottom,
             rgba(100, 167, 234, 1),
@@ -22,11 +24,25 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+
             .description {
                 width: 500px;
+                margin-bottom: 16px;
             }
+
+            .numberSelectors{
+                > div {
+                    margin-top: 8px;
+                    display: flex;
+                    flex-direction: column;   
+                }
+            }
+
             .bottomPart {
                 margin-top: 60px;
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
             }
         }
         .playerName {
@@ -46,23 +62,39 @@
                 margin-top: 60px;
                 margin-right: auto;
                 margin-left: auto;
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
             }
             img {
-                margin: auto;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 24px;
                 width: 200px;
             }
         }
         .startGame {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 16px;
+            h2 {
+                margin-bottom: 8px;
+            }
             .description {
                 width: 500px;
+            }
+            .theme {
+                h2 {
+                    margin-bottom: 16px;
+                }
             }
             .bottomPart {
                 margin-top: 60px;
                 margin-right: auto;
                 margin-left: auto;
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
             }
         }
     }

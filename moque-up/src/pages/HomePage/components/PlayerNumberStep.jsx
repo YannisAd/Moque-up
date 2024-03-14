@@ -24,9 +24,10 @@ const PlayerNumberStep = ({
     return (
         <div className="playerNumber">
             <span className="description">
-                Salut les apprentis designers. Bienvenue dans Moque-up, le jeu
-                où vos amis peuvent devenir vos pires cauchemars. Avez-vous
-                vraiment une âme d’artiste ? C’est ce que vous allez devoir
+                <h2>Salut les apprentis designers !</h2> <br />Bienvenue dans Moque-up, le jeu
+                où vos amis peuvent devenir vos pires cauchemars.
+                <br />
+                Avez-vous vraiment une âme d’artiste ? C’est ce que vous allez devoir
                 prouver à tous ! A vous de prouver que vous avez l’âme d’un
                 designer.
             </span>

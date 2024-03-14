@@ -15,7 +15,6 @@ const HomePage = () => {
     useEffect(() => {
         const startingGameStep = localStorage.getItem('startingGameStep');
         if (startingGameStep) {
-            console.log(startingGameStep);
             setStep(parseInt(startingGameStep));
         }
     }, [])
