@@ -64,9 +64,10 @@ const GamePage = () => {
         const currPos = document
             .getElementById(dragElem.id)
             .getBoundingClientRect();
-        console.log(currPos);
+        const scrollY = document.getElementById("comp-list").scrollTop;
+
         dragElem.position.x = currPos.left;
-        dragElem.position.y = currPos.top;
+        dragElem.position.y = currPos.top - scrollY;
 
         setZIndex((prev) => prev + 1);
         dragElem.zIndex = zIndex;
@@ -74,9 +75,9 @@ const GamePage = () => {
 
     function handleDragEnd(event) {
         const dragElem = drags.find((x) => x.id === event.active.id);
-
+        const scrollY = document.getElementById("comp-list").scrollTop;
         dragElem.position.x += event.delta.x;
-        dragElem.position.y += event.delta.y;
+        dragElem.position.y += event.delta.y + 2 * scrollY;
         dragElem.parent = event.over.id;
 
         const _drags = drags.map((x) => {

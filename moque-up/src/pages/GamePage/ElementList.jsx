@@ -22,7 +22,7 @@ const InitialElems = [
                 variant="outlined"
                 sx={{
                     width: 200,
-                    height: 100,
+                    height: 900,
                     resize: "both",
                 }}
             ></Card>
@@ -79,7 +79,7 @@ const InitialElems = [
             <Typography
                 variant="body1"
                 sx={{
-                    width: 200,
+                    width: 100,
                 }}
             >
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
