@@ -15,7 +15,6 @@ const GamePage = () => {
         <div className="gamePage">
             <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
                 <Droppable key="comp-list" id="comp-list" name="list-droppable">
-                    <h2>Liste d'éléments</h2>
                     {drags.map((dragElem) =>
                         dragElem.parent == "comp-list" ? (
                             <Draggable
