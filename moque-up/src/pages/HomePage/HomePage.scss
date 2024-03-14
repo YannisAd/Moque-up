@@ -14,7 +14,6 @@
             rgba(100, 167, 234, 0.9)
         );
         padding: 80px;
-        height: 500px;
         color: white;
         font-family: "RobotoMedium";
         border-radius: 25px;
@@ -31,8 +30,46 @@
             }
         }
         .playerName {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            .description {
+                width: 500px;
+            }
+            .nameSelection {
+                margin-top: 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .bottomPart {
+                margin-top: 60px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+            img {
+                margin: auto;
+                width: 200px;
+            }
         }
         .startGame {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            .description {
+                width: 500px;
+            }
+            .bottomPart {
+                margin-top: 60px;
+                margin-right: auto;
+                margin-left: auto;
+            }
         }
     }
+}
+
+.playerInput {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
 }
