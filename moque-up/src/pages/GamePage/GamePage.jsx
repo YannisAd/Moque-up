@@ -48,23 +48,16 @@ const GamePage = () => {
     }, []);
 
     const handleNextPlayer = useCallback(() => {
-        if (currentTurn === playerNumber * 3) {
+        if (currentTurn === playerNumber * 4) {
             navigate("/score");
             return;
         }
 
-        console.log("alalallala",currentPlayer);
-        console.log(players[currentPlayer]);
-        console.log(playerNumber);
-
         if (currentPlayer === playerNumber) {
-            console.log("on retourne au 1");
             setCurrentPlayer(1)
         } else {
             setCurrentPlayer((prev) => prev + 1);
         }
-
-       
 
         setCurrentTurn((prev) => prev + 1);
     }, [currentTurn, playerNumber]);
