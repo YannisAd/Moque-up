@@ -5,6 +5,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 const ScorePage = () => {
     const { players, setPlayers, saboteur, playerNumber } = useAppContext();
@@ -30,6 +31,16 @@ const ScorePage = () => {
         setShowResult(true);
     };
 
+    const navigate = useNavigate();
+
+    const goBackToMenu = () => {
+        localStorage.removeItem("players");
+        localStorage.removeItem("playerNumber");
+        localStorage.removeItem("startingGameStep");
+        localStorage.removeItem("theme");
+        navigate("/");
+    };
+
     const selectPotentialSaboteur = (player) => {
         setPotentialSaboteur(player);
     };
@@ -43,6 +54,7 @@ const ScorePage = () => {
                     <RadioGroup row name="radio-buttons">
                         {Array.from({ length: playerNumber }, (_, index) => (
                             <FormControlLabel
+                                disabled={showResult}
                                 key={index}
                                 label={players[index + 1].playerName}
                                 control={
@@ -67,31 +79,52 @@ const ScorePage = () => {
                     </RadioGroup>
                 </div>
 
-                <Button
-                    variant="outlined"
-                    onClick={handleShowSaboteur}
-                    style={{
-                        color: "white", // Couleur du texte en rose pâle
-                        borderColor: "white", // Couleur de la bordure en rose pâle
-                        "&:hover": {
-                            backgroundColor: "white", // Changement de couleur de fond au survol
-                            color: "white", // Changement de la couleur du texte pour le contraste
-                        },
-                        width: "200px",
-                    }}
-                >
-                    Vérifier
-                </Button>
+                {!showResult ? (
+                    <Button
+                        variant="outlined"
+                        onClick={handleShowSaboteur}
+                        style={{
+                            color: "white", // Couleur du texte en rose pâle
+                            borderColor: "white", // Couleur de la bordure en rose pâle
+                            "&:hover": {
+                                backgroundColor: "white", // Changement de couleur de fond au survol
+                                color: "white", // Changement de la couleur du texte pour le contraste
+                            },
+                            width: "200px",
+                            margin: "auto",
+                        }}
+                    >
+                        Vérifier
+                    </Button>
+                ) : (
+                    <Button
+                        variant="outlined"
+                        onClick={goBackToMenu}
+                        style={{
+                            color: "white", // Couleur du texte en rose pâle
+                            borderColor: "white", // Couleur de la bordure en rose pâle
+                            "&:hover": {
+                                backgroundColor: "white", // Changement de couleur de fond au survol
+                                color: "white", // Changement de la couleur du texte pour le contraste
+                            },
+                            width: "fit-content",
+                            margin: "auto",
+                        }}
+                    >
+                        Revenir au menu principal
+                    </Button>
+                )}
 
                 {showResult &&
                     (win ? (
                         <span className="result">
-                            Bravo Le saboteur était bien {potentialSaboteur}
+                            Bravo ! Le saboteur était bien {potentialSaboteur}{" "}
+                            😊
                         </span>
                     ) : (
                         <span className="result">
                             Perdu ! Le saboteur était{" "}
-                            {players[saboteur].playerName}
+                            {players[saboteur].playerName} ☹️
                         </span>
                     ))}
             </div>
