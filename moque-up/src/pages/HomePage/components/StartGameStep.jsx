@@ -34,16 +34,16 @@ const StartGameStep = () => {
                 <h2>La partie peut enfin commencer !!</h2> <br />
                 Vous pouvez dès maintenant cliquer sur le bouton "Lancer la
                 partie". <br />
-                Si vous souhaitez modifier une ou plusieurs informations libre à
+                Si vous souhaitez modifier une ou plusieurs informations, libre à
                 vous de revenir en arrière.
             </span>
 
             <span className="theme">
                 <h2>
-                    Voici le theme sur lequel vous allez devoir baser votre
+                    Voici le thème sur lequel vous allez devoir baser votre
                     interface :
                 </h2>
-                <h2>{theme}</h2>
+                <h3>{theme}</h3>
             </span>
 
             <div className="bottomPart">
