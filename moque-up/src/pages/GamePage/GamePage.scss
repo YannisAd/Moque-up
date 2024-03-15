@@ -6,8 +6,9 @@
     align-items: stretch;
 
     .list-droppable {
+        z-index: 10;
         flex: 1;
-        background-color: #ececec;
+        background-color: #efefef;
         padding: 16px;
         display: flex;
         flex-direction: column;
@@ -15,29 +16,34 @@
         align-items: center;
         gap: 16px;
 
-        background-color: #ececec;
-
         h2 {
             font-size: 2rem;
         }
 
         overflow-y: scroll;
-        overflow-x: visible;
+        overflow-x: unset;
     }
 
-    .board-droppable {
+    .board-container {
         flex: 4;
-        background-size: 40px 40px;
-        background-image: linear-gradient(
-                to right,
-                #ececec 1px,
-                transparent 1px
-            ),
-            linear-gradient(to bottom, #ececec 1px, transparent 1px);
+        z-index: 1;
+
+        .board-droppable {
+            height: 100%;
+            z-index: 1;
+            background-size: 40px 40px;
+            background-image: linear-gradient(
+                    to right,
+                    #ececec 1px,
+                    transparent 1px
+                ),
+                linear-gradient(to bottom, #ececec 1px, transparent 1px);
+        }
     }
 
     .draggable-item {
         display: flex;
+        flex-direction: row-reverse;
         align-items: center;
     }
 }

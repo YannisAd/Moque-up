@@ -8,7 +8,9 @@ export function Draggable(props) {
     });
     const style = transform
         ? {
-              transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+              transform: `translate3d(${transform.x}px, ${
+                  transform.y + document.getElementById("comp-list").scrollTop
+              }px, 0)`,
           }
         : undefined;
 
