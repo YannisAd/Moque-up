@@ -1,5 +1,4 @@
-import React, { useRef, useCallback, useState } from "react";
-import { useState, useEffect } from "react";
+import React, { useRef, useCallback, useState, useEffect } from "react";
 import { DndContext, DragOverlay } from "@dnd-kit/core";
 import cloneDeep from "lodash.clonedeep";
 import { Droppable } from "../../components/Droppable";
@@ -15,11 +14,10 @@ const GamePage = () => {
     const [zIndex, setZIndex] = useState(101);
     const [activeId, setActiveId] = useState(null);
     const [drags, setDrags] = useState(InitialElems);
-    const { setPlayers, players, theme } = useAppContext();
+    const { setPlayers, players, playerNumber } = useAppContext();
     const [currentPlayer, setCurrentPlayer] = useState(1);
     const [currentTurn, setCurrentTurn] = useState(1);
     const navigate = useNavigate();
-    const playerNumber = parseInt(localStorage.getItem("playerNumber"));
     const boardRef = useRef();
 
     useEffect(() => {
@@ -55,7 +53,18 @@ const GamePage = () => {
             return;
         }
 
-        setCurrentPlayer((prev) => (prev === playerNumber ? 1 : prev + 1));
+        console.log("alalallala",currentPlayer);
+        console.log(players[currentPlayer]);
+        console.log(playerNumber);
+
+        if (currentPlayer === playerNumber) {
+            console.log("on retourne au 1");
+            setCurrentPlayer(1)
+        } else {
+            setCurrentPlayer((prev) => prev + 1);
+        }
+
+       
 
         setCurrentTurn((prev) => prev + 1);
     }, [currentTurn, playerNumber]);
